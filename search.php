@@ -1,0 +1,58 @@
+<?php 
+  include 'partials/database.php';
+  include 'header.php';
+  // select all categories
+  if (isset($_GET['search']) && isset($_GET['submit'])) {
+    $search = filter_var($_GET['search'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    // fetching categories link
+    $category_query = "SELECT * FROM category ORDER BY title ASC";
+    $category_result = mysqli_query($connection, $category_query);
+    // fetching menu under each category
+    $food_query = "SELECT * FROM menu WHERE food LIKE '%$search%' ORDER BY category_id DESC";
+    $food_result = mysqli_query($connection, $food_query);
+  } else {
+    header("location: menu.php");
+    die();
+  }
+?>
+
+
+    <section class="category">
+        <?php while ($gotten_categories = mysqli_fetch_assoc($category_result)) : ?>
+        <a href="category.php?id=<?php echo $gotten_categories['id'] ?>"><?php echo $gotten_categories['title'] ?></a>
+        <?php endwhile ?>
+    </section>
+    <?php if (mysqli_num_rows($food_result) > 0) : ?>
+    <section class="menu">
+        <?php 
+          // fetching current user
+          $current_user = $_SESSION['user_id'];
+          // fetch customer id
+          $customer_query = "SELECT * FROM customers WHERE id='$current_user'";
+          $customer_result = mysqli_query($connection, $customer_query);
+          $customer = mysqli_fetch_assoc($customer_result);
+        ?>
+        <?php  while ($food = mysqli_fetch_assoc($food_result)) : ?>
+        <div class="menu_card">
+            <h3><?php echo $food['food'] ?></h3>
+            <h3>&#8358;<?php echo $food['price'] ?></h3>
+            <form action="secure_cart.php" method="post">
+                <input type="hidden" name="customer_id" value="<?php echo $customer['id'] ?>">
+                <input type="hidden" name="food_id" value="<?php echo $food['id'] ?>">
+                <?php if (isset($_SESSION['user_id'])) : ?>
+                <button type="submit" name="submit"><ion-icon name="bag-handle-outline"></ion-icon></button>
+                <?php else : ?>
+                <button type="submit" name="signin"><ion-icon name="bag-handle-outline"></ion-icon></button>
+                <?php endif ?>
+            </form>
+        </div>
+        <?php endwhile ?>
+    </section>
+    <?php else : ?>
+    <section class="title">
+        <h2>No menu for this!!</h>
+    </section>
+    <?php endif ?>
+
+<?php 
+  include 'footer.php';
