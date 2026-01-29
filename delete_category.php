@@ -4,7 +4,7 @@
   if (isset($_GET['id'])) {
     $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
     // get categories
-    $category_query = "SELECT * FROM category WHERE id=$id";
+    $category_query = "SELECT * FROM categories WHERE id=$id";
     $category_result = mysqli_query($connection, $category_query);
     $category = mysqli_fetch_assoc($category_result);
   }

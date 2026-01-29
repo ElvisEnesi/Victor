@@ -12,7 +12,7 @@
         header("location: edit_user_name.php");
         die();
     } else {
-        $update_user_name_query = "UPDATE customers SET user_name='$user' WHERE id=$id";
+        $update_user_name_query = "UPDATE customer SET username='$user' WHERE id=$id";
         $update_result = mysqli_query($connection, $update_user_name_query);
         if (!mysqli_errno($connection)) {
             $_SESSION['edit_user_name_success'] = "Username updated successfully!!";

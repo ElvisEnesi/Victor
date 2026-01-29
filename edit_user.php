@@ -4,7 +4,7 @@
   // get id from url
   if (isset($_GET['id'])) {
     $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
-    $edit_img_query = "SELECT * FROM customers WHERE id=$id";
+    $edit_img_query = "SELECT * FROM customer WHERE id=$id";
     $edit_result = mysqli_query($connection, $edit_img_query);
     $edit = mysqli_fetch_assoc($edit_result);
   } 
@@ -23,10 +23,10 @@
         <form action="edit_user_logic.php" method="post">
             <div class="signup_column">
                 <input type="hidden" name="id" value="<?php echo $edit['id'] ?>">
-                <input type="text" name="first" value="<?php echo $edit['first_name'] ?>" placeholder="First Name">
+                <input type="text" name="first" value="<?php echo $edit['firstname'] ?>" placeholder="First Name">
             </div>
             <div class="signup_column">
-                <input type="text" name="last" value="<?php echo $edit['last_name'] ?>" placeholder="Last Name">
+                <input type="text" name="last" value="<?php echo $edit['lastname'] ?>" placeholder="Last Name">
             </div>
             <button type="submit" name="submit">Submit</button>
         </form>

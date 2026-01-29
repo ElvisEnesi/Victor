@@ -20,7 +20,7 @@
         die();
     } else {
         # code...  update menu
-        $update = "UPDATE menu SET category_id=$category, price=$price, food='$title' WHERE id=$id";
+        $update = "UPDATE menus SET category_id=$category, price=$price, food='$title' WHERE id=$id";
         $query = mysqli_query($connection, $update);
         if (!mysqli_errno($connection)) {
             # code... redirect to manage menu with success message

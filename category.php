@@ -12,10 +12,10 @@
   if (isset($_GET['id'])) {
     $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
     // fetching categories link
-    $category_query = "SELECT * FROM category ORDER BY title ASC";
+    $category_query = "SELECT * FROM categories ORDER BY titles ASC";
     $category_result = mysqli_query($connection, $category_query);
     // fetching menu under each category
-    $food_query = "SELECT * FROM menu WHERE category_id=$id ORDER BY category_id DESC";
+    $food_query = "SELECT * FROM menus WHERE category_id=$id ORDER BY category_id DESC";
     $food_result = mysqli_query($connection, $food_query);
 
   } else {
@@ -28,15 +28,15 @@
     <section class="title">
         <?php 
           $category_id = $id;
-          $category_header = "SELECT * FROM category WHERE id=$id";
+          $category_header = "SELECT * FROM categories WHERE id=$id";
           $category_header_result = mysqli_query($connection, $category_header);
           $category = mysqli_fetch_assoc($category_header_result);
         ?>
-        <h1><?= $category['title'] ?></h1>
+        <h1><?= $category['titles'] ?></h1>
     </section>
     <section class="category">
         <?php while ($gotten_categories = mysqli_fetch_assoc($category_result)) : ?>
-        <a href="category.php?id=<?php echo $gotten_categories['id'] ?>"><?php echo $gotten_categories['title'] ?></a>
+        <a href="category.php?id=<?php echo $gotten_categories['id'] ?>"><?php echo $gotten_categories['titles'] ?></a>
         <?php endwhile ?>
     </section>
     <?php if (mysqli_num_rows($food_result) > 0) : ?>
@@ -45,7 +45,7 @@
           // fetching current user
           $current_user = $_SESSION['user_id'];
           // fetch customer id
-          $customer_query = "SELECT * FROM customers WHERE id='$current_user'";
+          $customer_query = "SELECT * FROM customer WHERE id='$current_user'";
           $customer_result = mysqli_query($connection, $customer_query);
           $customer = mysqli_fetch_assoc($customer_result);
         ?>

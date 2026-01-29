@@ -23,7 +23,7 @@
       header("location: add_menu.php");
       die();
     } else {
-      $menu_insert_query = "INSERT INTO menu SET food='$title', price='$price', availability=1, category_id=$category_id";
+      $menu_insert_query = "INSERT INTO menus SET food='$title', price='$price', availability=1, category_id=$category_id";
       $menu_insert_result = mysqli_query($connection, $menu_insert_query);
       if (!mysqli_errno($connection)) {
         $_SESSION['add_menu_success'] = "Menu added successfully!!";

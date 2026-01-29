@@ -19,7 +19,7 @@
             // hash password
             $hased_password = password_hash($create, PASSWORD_DEFAULT);
             // fetch users password
-            $DB = "SELECT * FROM customers WHERE id=$id";
+            $DB = "SELECT * FROM customer WHERE id=$id";
             $DB_query = mysqli_query($connection, $DB);
             // get just one user's password
             if (mysqli_num_rows($DB_query) == 1) {
@@ -28,7 +28,7 @@
                 // verify passwords
                 if (password_verify($current, $DB_passwod)) {
                     // update password
-                    $update_query = "UPDATE customers SET password='$hased_password' WHERE id=$id";
+                    $update_query = "UPDATE customer SET pass_key='$hased_password' WHERE id=$id";
                     $update_result = mysqli_query($connection, $update_query);
                     if (!mysqli_errno($connection)) {
                         $_SESSION['edit_password_success'] = "Your password has been successfully updated!!";

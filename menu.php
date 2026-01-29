@@ -2,7 +2,7 @@
   include 'partials/database.php';
   include 'header.php';
   // select all categories
-  $category_query = "SELECT * FROM category ORDER BY title ASC";
+  $category_query = "SELECT * FROM categories ORDER BY titles ASC";
   $category_result = mysqli_query($connection, $category_query);
 ?>
 
@@ -21,7 +21,7 @@
     <h1>Our Menu</h1>
     <section class="category">
         <?php while ($gotten_categories = mysqli_fetch_assoc($category_result)) : ?>
-        <a href="category.php?id=<?php echo $gotten_categories['id'] ?>"><?php echo $gotten_categories['title'] ?></a>
+        <a href="category.php?id=<?php echo $gotten_categories['id'] ?>"><?php echo $gotten_categories['titles'] ?></a>
         <?php endwhile ?>
     </section>
     <section class="menu">
@@ -29,11 +29,11 @@
           // fetching current user
           $current_user = $_SESSION['user_id'];
           // fetch customer id
-          $customer_query = "SELECT * FROM customers WHERE id='$current_user'";
+          $customer_query = "SELECT * FROM customer WHERE id='$current_user'";
           $customer_result = mysqli_query($connection, $customer_query);
           $customer = mysqli_fetch_assoc($customer_result);
           // fetch menu details
-          $food_query = "SELECT * FROM menu ORDER BY category_id DESC";
+          $food_query = "SELECT * FROM menus ORDER BY category_id DESC";
           $food_result = mysqli_query($connection, $food_query);
           while ($food = mysqli_fetch_assoc($food_result)) :
         ?>

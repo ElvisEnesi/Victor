@@ -9,7 +9,7 @@
     die();
   }
   // select all categories
-  $category_query = "SELECT * FROM category ORDER BY title ASC";
+  $category_query = "SELECT * FROM categories ORDER BY titles ASC";
   $category_result = mysqli_query($connection, $category_query);
 ?>
 
@@ -31,7 +31,7 @@
             <input type="hidden" name="availability" placeholder="available?">
             <select name="category">
             <?php while ($gotten_categories = mysqli_fetch_assoc($category_result)) : ?>
-                <option value="<?php echo $gotten_categories['id'] ?>"><?php echo $gotten_categories['title'] ?></option>
+                <option value="<?php echo $gotten_categories['id'] ?>"><?php echo $gotten_categories['titles'] ?></option>
             <?php endwhile ?>
             </select>
             <button type="submit" name="submit">Submit</button>

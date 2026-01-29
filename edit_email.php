@@ -11,7 +11,7 @@
   // get id from url
   if (isset($_GET['id'])) {
     $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
-    $edit_img_query = "SELECT * FROM customers WHERE id=$id";
+    $edit_img_query = "SELECT * FROM customer WHERE id=$id";
     $edit_result = mysqli_query($connection, $edit_img_query);
     $edit = mysqli_fetch_assoc($edit_result);
   } 

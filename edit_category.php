@@ -5,7 +5,7 @@
   if (isset($_GET['id'])) {
     $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
     // get categories
-    $category_query = "SELECT * FROM category WHERE id=$id";
+    $category_query = "SELECT * FROM categories WHERE id=$id";
     $category_result = mysqli_query($connection, $category_query);
     $category = mysqli_fetch_assoc($category_result);
   } 
@@ -24,8 +24,8 @@
     <section class="reserve">
         <form action="edit_category_logic.php" method="post">
             <input type="hidden" name="id" value="<?php echo $category['id'] ?>">
-            <input type="text" name="title" value="<?php echo $category['title'] ?>" placeholder="Name">
-            <textarea name="description" value="<?php echo $category['description'] ?>" placeholder="Description"><?php echo $category['description'] ?></textarea>
+            <input type="text" name="title" value="<?php echo $category['titles'] ?>" placeholder="Name">
+            <textarea name="description" value="<?php echo $category['descriptions'] ?>" placeholder="Description"><?php echo $category['descriptions'] ?></textarea>
             <button type="submit" name="submit">Submit</button>
         </form>
     </section>

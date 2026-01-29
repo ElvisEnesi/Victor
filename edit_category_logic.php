@@ -17,7 +17,7 @@
         die();
     } else {
         //  update category
-        $update = "UPDATE category SET title='$title', description='$description' WHERE id=$id";
+        $update = "UPDATE categories SET titles='$title', descriptions='$description' WHERE id=$id";
         $query = mysqli_query($connection, $update);
         if (!mysqli_errno($connection)) {
             // redirect to manage category with success message

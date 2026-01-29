@@ -27,7 +27,7 @@
             // if they match, hash them
             $hased_password = password_hash($createpassword, PASSWORD_DEFAULT); 
             // check if username or email is taken
-            $user_check_query = "SELECT * FROM customers WHERE user_name ='$username' or email = '$email'";
+            $user_check_query = "SELECT * FROM customer WHERE username ='$username' or emails = '$email'";
             $user_check_result = mysqli_query($connection, $user_check_query);
             if (mysqli_num_rows($user_check_result) > 0) {
                 $_SESSION['sign_up'] = 'Username or Email exists, try another!!';
@@ -56,13 +56,6 @@
             }
         }
     }
-
-
-
-
-
-
-
     // redirect if submit button wasn't clicked
     if (isset($_SESSION['sign_up'])) {
         // unlink avatar
@@ -71,9 +64,9 @@
         die();
     } else {
         // insert new user
-        $insert_user_query = "INSERT INTO customers SET first_name='$firstname', 
-        last_name='$lastname', user_name='$username', email='$email', 
-        password='$hased_password', avatar='$avatar_name', is_admin=0";
+        $insert_user_query = "INSERT INTO customer SET firstname='$firstname', 
+        lastname='$lastname', username='$username', emails='$email', 
+        pass_key='$hased_password', avatars='$avatar_name', is_add=0";
         $insert_user_result = mysqli_query($connection, $insert_user_query);
         if (!mysqli_errno($connection)) {
             // redirect to sign in with success message

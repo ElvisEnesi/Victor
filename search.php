@@ -5,10 +5,10 @@
   if (isset($_GET['search']) && isset($_GET['submit'])) {
     $search = filter_var($_GET['search'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     // fetching categories link
-    $category_query = "SELECT * FROM category ORDER BY title ASC";
+    $category_query = "SELECT * FROM categories ORDER BY titles ASC";
     $category_result = mysqli_query($connection, $category_query);
     // fetching menu under each category
-    $food_query = "SELECT * FROM menu WHERE food LIKE '%$search%' ORDER BY category_id DESC";
+    $food_query = "SELECT * FROM menus WHERE food LIKE '%$search%' ORDER BY category_id DESC";
     $food_result = mysqli_query($connection, $food_query);
   } else {
     header("location: menu.php");
@@ -19,7 +19,7 @@
 
     <section class="category">
         <?php while ($gotten_categories = mysqli_fetch_assoc($category_result)) : ?>
-        <a href="category.php?id=<?php echo $gotten_categories['id'] ?>"><?php echo $gotten_categories['title'] ?></a>
+        <a href="category.php?id=<?php echo $gotten_categories['id'] ?>"><?php echo $gotten_categories['titles'] ?></a>
         <?php endwhile ?>
     </section>
     <?php if (mysqli_num_rows($food_result) > 0) : ?>
@@ -28,7 +28,7 @@
           // fetching current user
           $current_user = $_SESSION['user_id'];
           // fetch customer id
-          $customer_query = "SELECT * FROM customers WHERE id='$current_user'";
+          $customer_query = "SELECT * FROM customer WHERE id='$current_user'";
           $customer_result = mysqli_query($connection, $customer_query);
           $customer = mysqli_fetch_assoc($customer_result);
         ?>

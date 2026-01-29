@@ -4,12 +4,12 @@
   // get id from url
   if (isset($_GET['id'])) {
     $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
-    $edit_img_query = "SELECT * FROM menu WHERE id=$id";
+    $edit_img_query = "SELECT * FROM menus WHERE id=$id";
     $edit_result = mysqli_query($connection, $edit_img_query);
     $edit = mysqli_fetch_assoc($edit_result);
   } 
   // get categories
-  $category_query = "SELECT * FROM category";
+  $category_query = "SELECT * FROM categories";
   $category_result = mysqli_query($connection, $category_query);
 ?>
 
@@ -30,7 +30,7 @@
             <input type="number" name="price" value="<?php echo $edit['price'] ?>" placeholder="Price">
             <select name="category">
                 <?php while ($category = mysqli_fetch_assoc($category_result)) : ?>
-                <option value="<?php echo $category['id'] ?>"><?php echo $category['title'] ?></option>
+                <option value="<?php echo $category['id'] ?>"><?php echo $category['titles'] ?></option>
                 <?php endwhile ?>
             </select>
             <button type="submit" name="submit">Submit</button>

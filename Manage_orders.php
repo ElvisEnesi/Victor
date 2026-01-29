@@ -1,7 +1,7 @@
 <?php 
   include 'partials/database.php';
   include 'header.php';
-  $order_query = "SELECT * FROM orders ORDER BY date ASC";
+  $order_query = "SELECT * FROM orderss ORDER BY date ASC";
   $order_result = mysqli_query($connection, $order_query); 
 ?>
 

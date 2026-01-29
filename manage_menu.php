@@ -9,7 +9,7 @@
     die();
   }
   // fetch all menu
-  $menu_query = "SELECT * FROM menu ORDER BY category_id ASC";
+  $menu_query = "SELECT * FROM menus ORDER BY category_id ASC";
   $menu_result = mysqli_query($connection, $menu_query);
 ?>
 
@@ -83,13 +83,13 @@
                 <?php while ($gotten_menu = mysqli_fetch_assoc($menu_result)) : ?>
                 <?php 
                   $category_id = $gotten_menu['category_id'];
-                  $category_query = "SELECT * FROM category WHERE id=$category_id";
+                  $category_query = "SELECT * FROM categories WHERE id=$category_id";
                   $category_result = mysqli_query($connection, $category_query);
                   $category = mysqli_fetch_assoc($category_result);
                 ?>
                 <tr>
                     <td><?php echo $gotten_menu['food']; ?></td>
-                    <td><?php echo $category['title'] ?></td>
+                    <td><?php echo $category['titles'] ?></td>
                     <td>&#8358;<?php echo $gotten_menu['price']; ?></td>
                     <td><?php echo $gotten_menu['availability'] ? 'yes' : 'no' ?></td>
                     <td><a href="edit_menu.php?id=<?php echo $gotten_menu['id'] ?>">Edit</a></td>

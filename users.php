@@ -10,7 +10,7 @@
   }
   // fetch users except current user
   $current_admin_user = $_SESSION['user_id'];
-  $get_user_query = "SELECT * FROM customers WHERE NOT id=$current_admin_user";
+  $get_user_query = "SELECT * FROM customer WHERE NOT id=$current_admin_user";
   $get_user_result = mysqli_query($connection, $get_user_query);
 ?>
 
@@ -57,10 +57,10 @@
                 <?php while ($gotten_user = mysqli_fetch_assoc($get_user_result)) : ?>
                 <tr>
                     <td><?php echo $gotten_user['id'] ?></td>
-                    <td><?php echo "{$gotten_user['first_name']} {$gotten_user['last_name']}"; ?></td>
-                    <td><?php echo $gotten_user['user_name']; ?></td>
-                    <td><?php echo $gotten_user['email']; ?></td>
-                    <td><?php echo $gotten_user['is_admin'] ? 'yes' : 'no' ; ?></td>
+                    <td><?php echo "{$gotten_user['firstname']} {$gotten_user['lastname']}"; ?></td>
+                    <td><?php echo $gotten_user['username']; ?></td>
+                    <td><?php echo $gotten_user['emails']; ?></td>
+                    <td><?php echo $gotten_user['is_add'] ? 'yes' : 'no' ; ?></td>
                     <td><a href="delete_customer.php?id=<?php echo $gotten_user['id']; ?>" class="error">Delete</a></td>
                 </tr>
                 <?php endwhile ?>

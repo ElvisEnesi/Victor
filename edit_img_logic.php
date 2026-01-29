@@ -40,7 +40,7 @@
     } else {
       //
       // update image
-      $query = "UPDATE customers SET avatar='$avatar_name' WHERE id=$id";
+      $query = "UPDATE customer SET avatars='$avatar_name' WHERE id=$id";
       $result = mysqli_query($connection, $query);
       if (!mysqli_errno($connection)) {
         $previous_avatar_path = 'images/Customers/' . $previous_avatar;

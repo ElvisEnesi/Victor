@@ -11,19 +11,19 @@
         $_SESSION['sign_in'] = "Fill all inputs!!!";
     } else {
         // proceed if all inputs are filled
-        $user_select_query = "SELECT * FROM customers WHERE email='$email'";
+        $user_select_query = "SELECT * FROM customer WHERE emails='$email'";
         $user_select_result = mysqli_query($connection, $user_select_query);
         // check if user was found
         if (mysqli_num_rows($user_select_result) == 1 ) {
             // convert into assoc array
             $user_record = mysqli_fetch_assoc($user_select_result);
-            $db_password = $user_record['password'];
+            $db_password = $user_record['pass_key'];
             // compare passwords
             if (password_verify($password, $db_password)) {
                 // set access control for login
                 $_SESSION['user_id'] = $user_record['id'];
                 // check if it's admin or user
-                if ($user_record['is_admin'] == 1) {
+                if ($user_record['is_add'] == 1) {
                     $_SESSION['user_is_admin'] = true;
                 } 
                 // log user in

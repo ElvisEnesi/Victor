@@ -44,7 +44,7 @@
             <button type="submit" name="submit">Submit</button>
         </form>
         <div class="note">
-            Already have an account? <a href="<?= ROOT_URL; ?>signin.php">Sign in</a>
+            Already have an account? <a href="signin.php">Sign in</a>
         </div>
     </section>
 

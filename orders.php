@@ -11,7 +11,7 @@
   // fetch current user
   $current_user = $_SESSION['user_id'];
   // select carts for only logged in user
-  $order_query = "SELECT * FROM orders WHERE customer_id='$current_user' ORDER BY date DESC";
+  $order_query = "SELECT * FROM orderss WHERE customer_id='$current_user' ORDER BY date DESC";
   $order_result = mysqli_query($connection, $order_query);
 ?>
 

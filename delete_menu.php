@@ -4,7 +4,7 @@
   if (isset($_GET['id'])) {
     $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
     // get categories
-    $menu_query = "SELECT * FROM menu WHERE id=$id";
+    $menu_query = "SELECT * FROM menus WHERE id=$id";
     $menu_result = mysqli_query($connection, $menu_query);
     $menu = mysqli_fetch_assoc($menu_result);
   }

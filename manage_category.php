@@ -9,7 +9,7 @@
     die();
   }
   // select all categories
-  $category_query = "SELECT * FROM category ORDER BY title ASC";
+  $category_query = "SELECT * FROM categories ORDER BY titles ASC";
   $category_result = mysqli_query($connection, $category_query);
 ?>
     <?php 
@@ -77,7 +77,7 @@
                 </tr>
                 <?php while ($gotten_categories = mysqli_fetch_assoc($category_result)) : ?>
                 <tr>
-                    <td><?php echo $gotten_categories['title']; ?></td>
+                    <td><?php echo $gotten_categories['titles']; ?></td>
                     <td><a href="edit_category.php?id=<?php echo $gotten_categories['id']; ?>">Edit</a></td>
                     <td><a href="delete_category.php?id=<?php echo $gotten_categories['id']; ?>" class="error">Delete</a></td>
                 </tr>

@@ -4,7 +4,7 @@
   // fetch current user
   $current_user = $_SESSION['user_id'];
   // select carts for only logged in user
-  $cart_query = "SELECT * FROM cart WHERE customer_id='$current_user' AND status='active' ORDER BY date DESC";
+  $cart_query = "SELECT * FROM carts WHERE customer_id='$current_user' AND status='active' ORDER BY date DESC";
   $cart_result = mysqli_query($connection, $cart_query);
   // stop unauthorised user
   if (!isset($_SESSION['user_id'])) {
@@ -65,7 +65,7 @@
                 <?php while ($cart = mysqli_fetch_assoc($cart_result)) : ?>
                 <?php 
                   $menu_id = $cart['menu_id'];
-                  $menu_query = "SELECT * FROM menu WHERE id=$menu_id";
+                  $menu_query = "SELECT * FROM menus WHERE id=$menu_id";
                   $menu_result = mysqli_query($connection, $menu_query);
                   $menu = mysqli_fetch_assoc($menu_result);
                 ?>

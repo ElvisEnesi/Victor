@@ -4,7 +4,7 @@
   if (isset($_GET['id'])) {
     $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
     // get categories
-    $cart_query = "SELECT * FROM cart WHERE id=$id";
+    $cart_query = "SELECT * FROM carts WHERE id=$id";
     $cart_result = mysqli_query($connection, $cart_query);
     $cart = mysqli_fetch_assoc($cart_result);
   }

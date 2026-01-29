@@ -12,10 +12,10 @@
         header("location: edit_email.php");
         die();
     } else {
-        $update_email_query = "UPDATE customers SET email='$email' WHERE id=$id";
+        $update_email_query = "UPDATE customer SET emails='$email' WHERE id=$id";
         $update_result = mysqli_query($connection, $update_email_query);
         if (!mysqli_errno($connection)) {
-            $_SESSION['edit_email_success'] = "Username updated successfully!!";
+            $_SESSION['edit_email_success'] = "Email updated successfully!!";
             header("location: dashboard.php");
             die();
         } else {

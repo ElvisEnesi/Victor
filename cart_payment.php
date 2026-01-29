@@ -6,11 +6,11 @@
     $id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
     // fetch current user
     $current_user = $_SESSION['user_id'];
-    $customer_query = "SELECT * FROM customers WHERE id='$current_user'";
+    $customer_query = "SELECT * FROM customer WHERE id='$current_user'";
     $customer_result = mysqli_query($connection, $customer_query);
     $customer = mysqli_fetch_assoc($customer_result);
     // select carts for only logged in user
-    $cart_query = "SELECT * FROM cart WHERE id=$id";
+    $cart_query = "SELECT * FROM carts WHERE id=$id";
     $cart_result = mysqli_query($connection, $cart_query);
     $cart = mysqli_fetch_assoc($cart_result); 
   } 

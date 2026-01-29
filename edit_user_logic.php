@@ -13,7 +13,7 @@
         header("location: edit_user.php");
         die();
     } else {
-        $update_user_query = "UPDATE customers SET first_name='$first', last_name='$last' WHERE id=$id";
+        $update_user_query = "UPDATE customer SET firstname='$first', lastname='$last' WHERE id=$id";
         $update_result = mysqli_query($connection, $update_user_query);
         if (!mysqli_errno($connection)) {
             $_SESSION['edit_user_success'] = "First & last names updated successfully!!";

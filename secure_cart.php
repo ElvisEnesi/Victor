@@ -11,7 +11,7 @@
     $customer_id = filter_var($_POST['customer_id'], FILTER_SANITIZE_NUMBER_INT);
     $food_id = filter_var($_POST['food_id'], FILTER_SANITIZE_NUMBER_INT);
     // insert into cart
-    $insert = "INSERT INTO cart SET menu_id=$food_id, customer_id=$customer_id";
+    $insert = "INSERT INTO carts SET menu_id=$food_id, customer_id=$customer_id";
     $query = mysqli_query($connection, $insert);
     if (!mysqli_errno($connection)) {
       $_SESSION['cart_success'] = "Item successfully added!!";

@@ -37,12 +37,12 @@
         die();
     } else {
         // insert into order table
-        $insert = "INSERT INTO orders SET customer_id=$id, cart_id=$cart_id, menu_id=$menu_id, 
-        phone='$phone', address='$address', payment='$receipt_name'";
+        $insert = "INSERT INTO orderss SET customer_id=$id, cart_id=$cart_id, menu_id=$menu_id, 
+        phone='$phone', address='$address', receipt='$receipt_name'";
         $query = mysqli_query($connection, $insert);
         if (!mysqli_errno($connection)) {
             $_SESSION['payment_success'] = "Order successfully created!!";
-            $update_cart = "UPDATE cart SET status='checked_out' WHERE id=$cart_id";
+            $update_cart = "UPDATE carts SET status='checked_out' WHERE id=$cart_id";
             $result = mysqli_query($connection, $update_cart);
             header("location: orders.php");
             die();

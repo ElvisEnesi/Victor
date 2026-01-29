@@ -14,7 +14,7 @@
         header("location: add_category.php");
         die();
     } else {
-        $insert_category_query = "INSERT INTO category SET title='$title', description='$description'";
+        $insert_category_query = "INSERT INTO categories SET titles='$title', descriptions='$description'";
         $insert_category_result = mysqli_query($connection, $insert_category_query);
         if (!mysqli_errno($connection)) {
             $_SESSION['add_category_success'] = "Category successfully added!!";

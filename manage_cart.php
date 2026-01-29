@@ -2,7 +2,7 @@
   include 'partials/database.php';
   include 'header.php';
   // select carts 
-  $cart_query = "SELECT * FROM cart WHERE status='checked_out' ORDER BY date ASC";
+  $cart_query = "SELECT * FROM carts WHERE status='checked_out' ORDER BY date ASC";
   $cart_result = mysqli_query($connection, $cart_query);
   // stop unauthorised user
   if (!isset($_SESSION['user_id'])) {
@@ -72,7 +72,7 @@
                 <?php while ($cart = mysqli_fetch_assoc($cart_result)) : ?>
                 <?php 
                   $menu_id = $cart['menu_id'];
-                  $menu_query = "SELECT * FROM menu WHERE id=$menu_id";
+                  $menu_query = "SELECT * FROM menus WHERE id=$menu_id";
                   $menu_result = mysqli_query($connection, $menu_query);
                   $menu = mysqli_fetch_assoc($menu_result);
                 ?>

@@ -10,7 +10,7 @@
   }
   // select users details //
   $current_user = $_SESSION['user_id'];
-  $user_details = "SELECT * FROM customers WHERE id='$current_user'";
+  $user_details = "SELECT * FROM customer WHERE id='$current_user'";
   $user_details_result = mysqli_query($connection, $user_details);
   $user_display = mysqli_fetch_assoc($user_details_result);
 ?>
@@ -126,7 +126,7 @@
         </aside>
         <main>
             <div class="profile_img">
-                <img src="./images/Customers/<?php echo $user_display['avatar']; ?>" alt="Can't show image, try updating it!!">
+                <img src="./images/Customers/<?php echo $user_display['avatars']; ?>" alt="Can't show image, try updating it!!">
                 <div class="icon">
                     <a href="edit_img.php?id=<?php echo $user_display['id']; ?>">
                         <ion-icon name="create-outline"></ion-icon>
@@ -134,15 +134,15 @@
                 </div>
             </div>
             <div class="info">
-                <p>Name: <?php echo "{$user_display['first_name']} {$user_display['last_name']}"; ?></p>
+                <p>Name: <?php echo "{$user_display['firstname']} {$user_display['lastname']}"; ?></p>
                 <a href="edit_user.php?id=<?php echo $user_display['id']; ?>"><ion-icon name="create-outline"></ion-icon></a>
             </div>
             <div class="info">
-                <p>Username: <?php echo $user_display['user_name']; ?></p>
+                <p>Username: <?php echo $user_display['username']; ?></p>
                 <a href="edit_user_name.php?id=<?php echo $user_display['id']; ?>"><ion-icon name="create-outline"></ion-icon></a>
             </div>
             <div class="info">
-                <p>Email: <?php echo $user_display['email']; ?></p>
+                <p>Email: <?php echo $user_display['emails']; ?></p>
                 <a href="edit_email.php?id=<?php echo $user_display['id']; ?>"><ion-icon name="create-outline"></ion-icon></a>
             </div>
             <div class="butts">
