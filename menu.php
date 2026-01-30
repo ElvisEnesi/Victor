@@ -6,12 +6,6 @@
   $category_result = mysqli_query($connection, $category_query);
 ?>
 
-
-    <marquee>
-        Check out our black Friday discounts on Fridays!!  
-        Check out our black Friday discounts on Fridays!!  
-        Check out our black Friday discounts on Fridays!!
-    </marquee>
     <section class="search">
         <form action="search.php" method="get">
             <input type="search" name="search" placeholder="Search!!">
@@ -27,7 +21,7 @@
     <section class="menu">
         <?php 
           // fetching current user
-          $current_user = $_SESSION['user_id'];
+          $current_user = $_SESSION['user_id'] ?? null;
           // fetch customer id
           $customer_query = "SELECT * FROM customer WHERE id='$current_user'";
           $customer_result = mysqli_query($connection, $customer_query);
@@ -37,9 +31,36 @@
           $food_result = mysqli_query($connection, $food_query);
           while ($food = mysqli_fetch_assoc($food_result)) :
         ?>
+        <?php 
+            $price = $food['price'];
+            $discount = $food['discount_percent'];
+            $is_black_friday = $food['is_black_friday'];
+
+            $date = date('Y-m-d');
+            if ($discount_date = ($date === '2026-11-29')) {
+                $is_black_friday = true;
+                if ($is_black_friday = true) {
+                    $final_price = $price - ($price * $discount / 100);
+                } else {
+                    $final_price = $price;
+                }
+            } else {
+                $is_black_friday = false;
+            }
+        ?>
+        
         <div class="menu_card">
             <h3><?php echo $food['food'] ?></h3>
-            <h3>&#8358;<?php echo $food['price'] ?></h3>
+            <h3>&#8358;
+            <?php
+                if ($is_black_friday && $discount > 0) {
+                    echo "<del>" . number_format($price) . "</del> ";
+                    echo "<strong>" . number_format($final_price) . "</strong>";
+                } else {
+                    echo number_format($price);
+                }
+            ?>
+        </h3>
             <form action="secure_cart.php" method="post">
                 <input type="hidden" name="customer_id" value="<?php echo $customer['id'] ?>">
                 <input type="hidden" name="food_id" value="<?php echo $food['id'] ?>">

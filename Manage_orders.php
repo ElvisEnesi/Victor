@@ -40,9 +40,9 @@
                 <?php while ($order = mysqli_fetch_assoc($order_result)) : ?>
                 <tr>
                     <td><?= $order['id'] ?></td>
-                    <td><?= $order['cart_id'] ?></td>
-                    <td><?= $order['customer_id'] ?></td>
-                    <td><?= $order['menu_id'] ?></td>
+                    <td><?= $order['cart_id'] ?? 'deleted' ?></td>
+                    <td><?= $order['customer_id'] ?? 'deleted' ?></td>
+                    <td><?= $order['menu_id'] ?? 'deleted' ?></td>
                     <td><a href="./images/Uploads/<?php echo htmlspecialchars($order['receipt']) ?>" download="">Download</a></td>
                     <td><?= $order['status'] ?></td>
                     <td><?= $order['date'] ?></td>

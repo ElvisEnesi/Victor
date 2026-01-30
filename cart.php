@@ -58,7 +58,6 @@
                 <tr>
                     <th>Name</th>
                     <th>Price</th>
-                    <th>Status</th>
                     <th>Buy</th>
                     <th>Delete</th>
                 </tr>
@@ -72,7 +71,6 @@
                 <tr>
                     <td><?php echo $menu['food'] ?></td>
                     <td>&#8358;<?php echo $menu['price'] ?></td>
-                    <td><?php echo $cart['status'] ?></td>
                     <td><a href="cart_payment.php?id=<?php echo $cart['id'] ?>">Proceed to payment</a></td>
                     <td><a href="delete_cart.php?id=<?php echo $cart['id'] ?>" class="error">Remove from cart</a></td>
                 </tr>

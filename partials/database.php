@@ -1,6 +1,8 @@
 <?php 
   // starting session
-  session_start();
+  if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+  }
   // declare DB variables
   $server = 'localhost';
   $username = 'root';

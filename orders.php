@@ -55,7 +55,7 @@
                 <?php while ($order = mysqli_fetch_assoc($order_result)) : ?>
                 <tr>
                     <td><?php echo $order['status'] ?></td>
-                    <td><a href="./images/Uploads/<?php echo htmlspecialchars($order['payment']) ?>" download="">Download</a></td>
+                    <td><a href="./images/Uploads/<?php echo htmlspecialchars($order['receipt']) ?>" download="">Download</a></td>
                     <td><?php echo $order['date'] ?></td>
                 </tr>
                 <?php endwhile ?>
