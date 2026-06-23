@@ -32,11 +32,9 @@
             } else {
                 $_SESSION['sign_in'] = "Incorrect password!";
             }
-            
         } else {
             $_SESSION['sign_in'] = "No user found!!";
         }
-        
     }
 
 

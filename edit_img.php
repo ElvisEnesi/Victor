@@ -23,7 +23,7 @@
         <h1>Edit Profile Image</h1>
         <form action="edit_img_logic.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $edit['id'] ?>">
-            <input type="hidden" name="previous_avatar" value="<?php echo $edit['avatar'] ?>">
+            <input type="hidden" name="previous_avatar" value="<?php echo $edit['picture'] ?>">
             <input type="file" name="avatar">
             <button type="submit" name="submit">Submit</button>
         </form>

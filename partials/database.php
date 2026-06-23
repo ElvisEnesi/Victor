@@ -5,8 +5,8 @@
   }
   // declare DB variables
   $server = 'localhost';
-  $username = 'root';
-  $dbpass = '';
+  $username = 'elvis';
+  $dbpass = 'ElvisSecure2026!';
   $dbname = 'victor';
   // make connetion
   $connection = new mysqli($server, $username, $dbpass, $dbname);
